@@ -1,7 +1,4 @@
-# complete-website-server-abir-oz
 
-
-### This is the Server Side Of Kuthir Travelers
 
 ##### Tools Used
 
