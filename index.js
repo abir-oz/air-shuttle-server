@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-const fileUpload = require('express-fileUpload');
+
 
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
@@ -12,8 +12,8 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('uploads'));
-app.use(fileUpload());
+
+
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.gfyph.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
@@ -43,44 +43,10 @@ client.connect(err => {
 
 
 
-
-
-
-
-    /*  app.get("/packages", (req, res) => {
-         packages.find()
-             .toArray((err, items) => {
-                 res.send(items);
-             })
-     })
-     
-     
-      */
-
-    /* app.patch('/updateStatus/:id', (req, res) => {
-
-       const id = ObjectID(req.params.id);
-       // const status = req.body.orderStatus;
-
-        bookings.updateOne({ _id: id},
-       {
-           $set : req.body
-       })
-       .then((result) => {
-           if(result.modifiedCount > 0)
-           {
-               res.send(result);
-           }
-       }) 
-
-       console.log(id ,req.body);
-   }) */
-
     app.patch('/updateStatus/:id', (req, res) => {
 
         const id = ObjectID(req.params.id);
-        // const status = req.body.orderStatus;
-
+      
         seats.updateOne({ _id: id },
             {
                 $set: req.body
